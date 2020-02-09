@@ -1,0 +1,11 @@
+logs
+*.log
+node_modules
+npm-debug.log
+.idea
+__build__
+.DS_Store
+/COMMIT
+/cache
+/debugImages
+/public/photos

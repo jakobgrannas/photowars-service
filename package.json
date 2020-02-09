@@ -1,0 +1,33 @@
+{
+  "name": "photo-wars-service",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jakob Grannas",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon $npm_package_main 2>&1 | bunyan --color -o short",
+    "debug": "nodemon --inspect --prof $npm_package_main 2>&1 | bunyan -o short",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakobgrannas/photo-wars-service.git"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^1.2.9",
+    "async": "^3.1.0",
+    "bunyan": "^1.8.10",
+    "busboy": "^0.3.1",
+    "canvas": "^2.6.0",
+    "dotenv": "^8.2.0",
+    "expo-constants": "^7.0.1",
+    "face-api.js": "^0.21.0",
+    "ip": "^1.1.5",
+    "mongoose": "^5.7.10",
+    "node-service": "file:../node-service",
+    "restify": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
