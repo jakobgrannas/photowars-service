@@ -23,8 +23,8 @@ const TASK_MONGODB = 'TASK_MONGODB';
 async.auto({
 
   [TASK_MONGODB]: (done) => {
-    console.log(`${config.MONGODB_URL}/${config.database}`);
-    mongoose.connect(`${config.MONGODB_URL}/${config.database}`, { useNewUrlParser: true });
+    console.log(`${config.MONGODB_URL}/${config.database}/?retryWrites=true&w=majority`);
+    mongoose.connect(`${config.MONGODB_URL}/${config.database}/?retryWrites=true&w=majority`, { useNewUrlParser: true });
 
     const db = mongoose.connection;
     db.on('error', done);

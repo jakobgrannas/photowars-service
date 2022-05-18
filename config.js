@@ -12,7 +12,7 @@ const config = {
     port: PORT,
     name: pkg.name
   },
-  database: 'photo-wars'
+  database: 'photowars'
 };
 
 

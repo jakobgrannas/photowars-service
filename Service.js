@@ -26,6 +26,7 @@ class PhotoWarsService extends Service {
 
     const publicPath = 'public/photos';
     const uploadPath = path.join(__dirname, `${publicPath}`);
+    debugger;
     const { username, name } = req.body;
     const { File } = req.files;
     const filePath = path.join(uploadPath, `${username}${path.extname(File.name)}`);
