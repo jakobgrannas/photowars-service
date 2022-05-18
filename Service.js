@@ -10,6 +10,9 @@ const faceapi = require('face-api.js');
 
 const { user: User } = require('./schema'); // TODO: Change schema to export with capital first letter
 
+//const protocol = req.isSecure() ? 'https' : 'http';
+// const origin = `http://${ip.address()}:${this.port}`;
+
 class PhotoWarsService extends Service {
 
   constructor(options) {
@@ -30,21 +33,20 @@ class PhotoWarsService extends Service {
     const { username, name } = req.body;
     const { File } = req.files;
     const filePath = path.join(uploadPath, `${username}${path.extname(File.name)}`);
-    const protocol = req.isSecure() ? 'https' : 'http';
 
     try {
-      const file = await fs.writeFile(filePath, req.params.File);
+      await fs.writeFile(filePath, req.params.File);
     } catch(err) {
       this.logger.error({ err }, 'postAddUser failed to write user photo file');
     }
     
     const descriptor = await getFaceDescriptor(filePath);
 
-    const publicPhotoUrl = `${protocol}://${ip.address()}:${this.port}/${publicPath}/${username}${path.extname(filePath)}`;
+    const publicPhotoUrl = `/${publicPath}/${username}${path.extname(filePath)}`;
 
     const newUser = new User({
-      username,
-      name,
+      username: username.trim(),
+      name: name.trim(),
       photo: {
         url: publicPhotoUrl
       },
